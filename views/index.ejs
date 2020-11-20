@@ -9,16 +9,24 @@
 <div class="box" id="heading">
     <h1><%= date %></h1>
 </div>
-
+<div class="box" id="heading"><h2><%= type %></h2></div>
 <div class="box">
 
     <% for(var i = 0;i < toDos.length;i++){ %>
-        <div class="item"><input type="checkbox"><p><%= toDos[i] %></p></div>
+        <div class="item"><input type="checkbox">
+            <p><%= toDos[i] %></p></div>
     <% } %>
-    <form class="item" action="/" method="post">
-        <input name="newTask" type="text" placeholder="New task">
-        <button type="submit">+</button>
-    </form>
+    <% if(type === "Work"){ %>
+        <form class="item" action="/work" method="post">
+            <input name="newTask" type="text" placeholder="New task" autocomplete="off">
+            <button type="submit">+</button>
+        </form>
+    <% }else{ %>
+        <form class="item" action="/" method="post">
+            <input name="newTask" type="text" placeholder="New task" autocomplete="off">
+            <button type="submit">+</button>
+        </form>
+    <% } %>
 </div>
 
 </body>
