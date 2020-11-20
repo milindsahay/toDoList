@@ -5,16 +5,19 @@ const PORT = process.env.PORT || 3000;
 
 const app = express();
 
-let newTask = [];
+let toDos = [];
 app.use(express.static(__dirname + "/views"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.get("/", (req, res) => {
-    res.render('index', {date: date(), newTask: newTask});
+    res.render('index', {date: date(), toDos: toDos});
 })
 
 app.post('/', (req, res) => {
-    newTask.push(req.body.newTask);
+    let newTask = req.body.newTask;
+    if (newTask.length){
+        toDos.push(req.body.newTask);
+    }
     res.redirect('/');
 })
 app.listen(PORT, () => {

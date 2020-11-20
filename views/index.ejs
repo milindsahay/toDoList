@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1><%= date %></h1>
-<p>To Do List</p>
-<ul>
-    <% for(var i = 0;i < newTask.length;i++){ %>
-        <li><%= newTask[i] %></li>
+<div class="box" id="heading">
+    <h1><%= date %></h1>
+</div>
+
+<div class="box">
+
+    <% for(var i = 0;i < toDos.length;i++){ %>
+        <div class="item"><input type="checkbox"><p><%= toDos[i] %></p></div>
     <% } %>
-</ul>
-<form action="/" method="post">
-    <input name="newTask" type="text" placeholder="New task">
-    <button type="submit">Add</button>
-</form>
+    <form class="item" action="/" method="post">
+        <input name="newTask" type="text" placeholder="New task">
+        <button type="submit">+</button>
+    </form>
+</div>
 
 </body>
 </html>
