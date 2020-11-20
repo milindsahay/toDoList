@@ -1,11 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<%-include('header.ejs')-%>
 <div class="box" id="heading">
     <h1><%= date %></h1>
 </div>
@@ -28,6 +21,4 @@
         </form>
     <% } %>
 </div>
-
-</body>
-</html>
+<%-include('footer.ejs')-%>
