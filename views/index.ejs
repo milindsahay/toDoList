@@ -1,4 +1,4 @@
-<%-include('header.ejs')-%>
+<%- include('header.ejs') -%>
 <div class="box" id="heading">
     <h1><%= date %></h1>
 </div>
@@ -6,23 +6,21 @@
 <div class="box">
 
     <% for(var i = 0;i < toDos.length;i++){ %>
-    <form action="/delete" method="post">
-        <div class="item">
-            <input type="checkbox" name="checkbox" value=<%=toDos[i]._id%> onchange="this.form.submit()">
-            <p><%= toDos[i].item %></p>
-        </div>
+        <form action="/delete" method="post">
+            <div class="item">
+                <input type="checkbox" name="checkbox" value=<%= toDos[i]._id %> onchange="this.form.submit()">
+                <p><%= toDos[i].item %></p>
+            </div>
+            <input type="hidden" name="listName" value=<%= type %>>
+        </form>
+    <% } %>
+
+    <form class="item" action="/" method="post">
+        <input name="newTask" type="text" placeholder="New task" autocomplete="off">
+        <button type="submit" name="button" value=
+                <%= type %>
+        >+
+        </button>
     </form>
-    <% } %>
-    <% if(type === "Work"){ %>
-        <form class="item" action="/work" method="post">
-            <input name="newTask" type="text" placeholder="New task" autocomplete="off">
-            <button type="submit">+</button>
-        </form>
-    <% }else{ %>
-        <form class="item" action="/" method="post">
-            <input name="newTask" type="text" placeholder="New task" autocomplete="off">
-            <button type="submit">+</button>
-        </form>
-    <% } %>
 </div>
-<%-include('footer.ejs')-%>
+<%- include('footer.ejs') -%>
