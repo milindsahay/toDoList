@@ -49,6 +49,14 @@ app.post('/', (req, res) => {
     }
     res.redirect('/');
 })
+app.post('/delete', (req, res) => {
+    Item.findByIdAndDelete(req.body.checkbox, (err) => {
+        if (!err) {
+            console.log("Successfully deleted the entry");
+        }
+        res.redirect('/');
+    })
+})
 app.post('/work', (req, res) => {
     let newTask = req.body.newTask;
     if (newTask.length) {
