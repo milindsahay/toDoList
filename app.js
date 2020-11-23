@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static(__dirname + "/views"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-mongoose.connect('mongodb://localhost:27017/toDoListDB', {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://milind:Test123@cluster0.qrnep.mongodb.net/toDoListDB?retryWrites=true&w=majority", {useNewUrlParser: true});
 const itemSchema = {
     item: String
 }
@@ -37,8 +37,10 @@ app.get("/", (req, res) => {
                         console.log("DB updated successfully");
                     }
                 })
+                res.redirect('/');
+            } else {
+                res.render('index', {date: date(), toDos: result, type: "Today"});
             }
-            res.render('index', {date: date(), toDos: result, type: "Today"});
         }
     })
 
