@@ -1,0 +1,2 @@
+## To Do List
+A to do list hosted on expressJS and mongoDB Atlas. It uses a dynamic routing to create a custom to do list. Put any path (eg: '/work') to create a new to do list (eg: for work). [link](https://sleepy-citadel-61068.herokuapp.com/)
